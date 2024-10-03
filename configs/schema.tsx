@@ -1,9 +1,11 @@
-import { boolean, int, mysqlTable, varchar } from "drizzle-orm/mysql-core";
+import { boolean, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable } from "drizzle-orm/pg-core";
 
-export const Users = mysqlTable("users", {
-    id: int("id").primaryKey().autoincrement(),
-    name: varchar("name", { length: 255 }).notNull(),
-    email: varchar("email", { length: 255 }).notNull(),
-    imageUrl: varchar("imageUrl", { length: 255 }),
+export const Users = pgTable("users", {
+    id : integer('id').primaryKey(),
+    name: varchar('name').notNull(),
+    email: varchar("email").notNull(),
+    imageUrl: varchar("imageUrl"),
     subscription: boolean("subscription").default(false)
 });
+
